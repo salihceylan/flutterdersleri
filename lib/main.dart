@@ -27,15 +27,44 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       title: "Tüm Öğrendiklerim",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: BurcListesi(),
+      home: new TumDersler(),
+    );
+  }
+}
+
+class TumDersler extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tüm Uygulamalar"),
       ),
+      body: Center(
+          child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => BurcListesi(),
+                  ),
+                );
+              },
+              color: Colors.blue,
+              child: Text("Burçlar"),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

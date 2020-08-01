@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
 import 'sol_menu.dart';
 
+
+class StepperHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: "Tüm Öğrendiklerim",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new StepperKullanimi(),
+    );
+  }
+}
+
+
 class StepperKullanimi extends StatefulWidget {
   @override
   _StepperKullanimiState createState() => _StepperKullanimiState();
@@ -101,7 +117,7 @@ class _StepperKullanimiState extends State<StepperKullanimi> {
     return Scaffold(
       drawer: SolMenu(),
       appBar: AppBar(
-        title: Text("My Lessons"),
+        title: Text("Stepper Kullanımı"),
       ),
       body: SingleChildScrollView(
         child: Stepper(

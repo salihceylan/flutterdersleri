@@ -13,7 +13,7 @@ class BurcListesi extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.all(3),
           child: Card(
-            
+
             elevation: 25,
             child: Container(
               color: index % 2 == 0

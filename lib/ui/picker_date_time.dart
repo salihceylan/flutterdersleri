@@ -1,62 +1,89 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class PickerDateTime extends StatefulWidget {
+class TarihZamanSeciciHome extends StatelessWidget {
   @override
-  _PickerDateTimeState createState() => _PickerDateTimeState();
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: "Tüm Öğrendiklerim",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new TarihZamanSecici(),
+    );
+  }
 }
 
-class _PickerDateTimeState extends State<PickerDateTime> {
+class TarihZamanSecici extends StatefulWidget {
+  @override
+  _TarihZamanSeciciState createState() => _TarihZamanSeciciState();
+}
+
+class _TarihZamanSeciciState extends State<TarihZamanSecici> {
   String secilenil = "", secilenTarih = "", secilenSaat = "";
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            CupertinoButton.filled(
-              child: Text("Cupertino Picker"),
-              onPressed: () => _showCupertinoPicker(context),
-            ),
-            Divider(
-              height: 15,
-            ),
-            Container(
-              child: Text(secilenil,
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold)),
-            ),
-            Divider(
-              height: 15,
-            ),
-            CupertinoButton.filled(
-              child: Text("Cupertino Date Picker"),
-              onPressed: () => _showCupertinoDatePicker(context),
-            ),
-            Divider(
-              height: 15,
-            ),
-            Container(
-              child: Text(secilenTarih,style: TextStyle(fontSize: 17, color: Colors.blue, fontWeight: FontWeight.bold)),
-            ),
-            Divider(
-              height: 15,
-            ),
-            CupertinoButton.filled(
-              child: Text("Cupertino Time Picker"),
-              onPressed: () => _showCupertinoTimePicker(context),
-            ),
-            Divider(
-              height: 15,
-            ),
-            Container(
-              child: Text(secilenSaat,style: TextStyle(fontSize: 17, color: Colors.blue, fontWeight: FontWeight.bold)),
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tarih Zaman Seçici"),
+      ),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              CupertinoButton.filled(
+                child: Text("Cupertino Picker"),
+                onPressed: () => _showCupertinoPicker(context),
+              ),
+              Divider(
+                height: 15,
+              ),
+              Container(
+                child: Text(secilenil,
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Divider(
+                height: 15,
+              ),
+              CupertinoButton.filled(
+                child: Text("Cupertino Date Picker"),
+                onPressed: () => _showCupertinoDatePicker(context),
+              ),
+              Divider(
+                height: 15,
+              ),
+              Container(
+                child: Text(secilenTarih,
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Divider(
+                height: 15,
+              ),
+              CupertinoButton.filled(
+                child: Text("Cupertino Time Picker"),
+                onPressed: () => _showCupertinoTimePicker(context),
+              ),
+              Divider(
+                height: 15,
+              ),
+              Container(
+                child: Text(secilenSaat,
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -170,7 +197,6 @@ class _PickerDateTimeState extends State<PickerDateTime> {
         ),
         margin: EdgeInsets.all(10),
         height: 200,
-
       ),
     );
   }
