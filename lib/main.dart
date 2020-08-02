@@ -62,6 +62,18 @@ class TumDersler extends StatelessWidget {
               color: Colors.blue,
               child: Text("Burçlar"),
             ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => PageViewKullanimiHome(),
+                  ),
+                );
+              },
+              color: Colors.blue,
+              child: Text("PageView Kullanımı"),
+            ),
           ],
         ),
       )),
