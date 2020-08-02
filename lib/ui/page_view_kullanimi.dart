@@ -17,6 +17,10 @@ class _PageViewKullanimiState extends State<PageViewKullanimi> {
   var myPageController =
       PageController(initialPage: 0, keepPage: true, viewportFraction: 1);
 
+  var sayfaScrollYatayDirection = true;
+  var sayfaReverse = false;
+  var sayfaSnapping = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +33,11 @@ class _PageViewKullanimiState extends State<PageViewKullanimi> {
           Expanded(
             flex: 10,
             child: PageView(
-              scrollDirection: Axis.horizontal,
+              scrollDirection:
+                  sayfaScrollYatayDirection ? Axis.horizontal : Axis.vertical,
               controller: myPageController,
-              reverse: false,
-              pageSnapping: true,
+              reverse: sayfaReverse,
+              pageSnapping: sayfaSnapping,
               onPageChanged: (index) {
                 print("sayfa indexi $index");
               },
@@ -46,18 +51,109 @@ class _PageViewKullanimiState extends State<PageViewKullanimi> {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 3,
             child: Container(
                 margin: EdgeInsets.all(5),
                 width: double.infinity,
                 color: Colors.greenAccent,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        
+                        IconButton(
+                          icon: Icon(Icons.arrow_left),
+                          iconSize: 35,
+                          onPressed: () {
+                            setState(() {
+                              myPageController.previousPage(
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.linear,
+                              );
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Text("Sayfa 1   "),
+                          onTap: () {
+                            setState(() {
+                              myPageController.jumpToPage(0);
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Text("Sayfa 2    "),
+                          onTap: () {
+                            setState(() {
+                              myPageController.jumpToPage(1);
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Text("Sayfa 3  "),
+                          onTap: () {
+                            setState(() {
+                              myPageController.jumpToPage(2);
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Text("Sayfa 4  "),
+                          onTap: () {
+                            setState(() {
+                              myPageController.jumpToPage(3);
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          child: Text("Sayfa 5"),
+                          onTap: () {
+                            setState(() {
+                              myPageController.jumpToPage(4);
+                            });
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.arrow_right),
+                          iconSize: 35,
+                          onPressed: () {
+                            setState(() {
+                              myPageController.nextPage(
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.linear,
+                              );
+                            });
+                          },
+                        ),
                       ],
-                    )
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text("Yatay/Dikey"),
+                        Checkbox(
+                          value: sayfaScrollYatayDirection,onChanged: (d){setState(() {
+                            sayfaScrollYatayDirection=d;
+                          });},
+                        ),
+                        Text("Reverse?"),
+                        Checkbox(
+
+                          value: sayfaReverse,
+                          onChanged: (d){setState(() {
+                            sayfaReverse=d;
+                          });},
+                        ),
+                        Text("Snapping?"),
+                        Checkbox(
+                          value: sayfaSnapping,
+                          onChanged: (d){setState(() {
+                            sayfaSnapping=d;
+                          });},
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ),
                   ],
                 )),
           ),
