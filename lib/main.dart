@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_app/ui/tabbar_tabview_kullanimi.dart';
 import 'ui/burclar.dart';
 import 'ui/bottom_navigation_kullanimi.dart';
 import 'ui/page_view_kullanimi.dart';
@@ -74,6 +75,19 @@ class TumDersler extends StatelessWidget {
               color: Colors.blue,
               child: Text("PageView Kullanımı"),
             ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => TabbarTabviewKullanimi(),
+                  ),
+                );
+              },
+              color: Colors.blue,
+              child: Text("Tabbar Tabview Kullanımı"),
+            ),
+
           ],
         ),
       )),
